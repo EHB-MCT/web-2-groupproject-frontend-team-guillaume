@@ -3,12 +3,44 @@
 window.onload = function () {
 
     function call() {
+
+        let container = document.getElementById("container");
+
+        let htmlString = ""
+
         fetch('https://challenge-app-team-guillaume.herokuapp.com/challenges', {
                 method: 'GET'
             })
             .then(response => {
-                console.log(response)
+                return response.json()
             })
+            .then(data => {
+                console.log(data)
+
+                for (let i = 0; i < data.length; i++) {
+
+                    console.log(data[i])
+
+                    htmlString = `
+                    <div class="result">
+                    <div class="headerresult">
+                    <i class="material-icons">delete</i>
+                    <i class="material-icons">create</i>
+                    </div>
+                    <h2> Challenge: </h2> 
+                    <h3>${data[i].name}</h3>
+                    <h2> Points :</h2> 
+                    <h3>${data[i].points}</h3>
+                    <h2> Course : </h2> 
+                    <h3>${data[i].course}</h3>
+                    <h2> Session : </h2>
+                    <h3>${data[i].session}}</h3> 
+                    </div>
+                   `
+                    container.insertAdjacentHTML("beforeend", htmlString)
+                }
+            })
+
         // .then(data => {
         //     console.log(data)
         // })
