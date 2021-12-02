@@ -2,6 +2,20 @@
 
 window.onload = function () {
 
+    function call() {
+        fetch('https://challenge-app-team-guillaume.herokuapp.com/challenges', {
+                method: 'GET'
+            })
+            .then(response => {
+                console.log(response)
+            })
+        // .then(data => {
+        //     console.log(data)
+        // })
+    }
+
+    call()
+
 
     document.getElementById("form").addEventListener("submit", e => {
         e.preventDefault();
