@@ -18,11 +18,8 @@ window.onload = function () {
 
 
                 for (let i = 0; i < data.length; i++) {
-
-
-
                     htmlString = `
-                    <div class="result" id="${data[i]._id}">
+                    <div class="result" id="${data[i]._id} ">
                     <div class="headerresult">
                     <i class="material-icons delete" id="${data[i]._id}">delete</i>
                     <i class="material-icons update">create</i>
@@ -44,24 +41,47 @@ window.onload = function () {
         // .then(data => {
         //     console.log(data)
         // })
-    }
 
+    }
     call()
 
+
     function deleteBtn() {
+        console.log(document.getElementsByClassName("delete"));
 
-        let btns = document.querySelectorAll(".delete");
+        const buttons = document.getElementsByClassName("delete")
+        let buttonsArray = [].slice.call(buttons);
 
-        for (let btn of btns) {
-            btn.onclick = () => {
-                console.log("caca");
-                document.getElementById(btn.id).remove();
+        console.log(buttonsArray);
 
-            }
-        }
+        buttonsArray.forEach(button => {
+
+            button.addEventListener("click", function (e) {
+                console.log("test");
+
+                fetch(`https://challenge-app-team-guillaume.herokuapp.com/deleteChallenges/${button.id}`, {
+                        method: "DELETE",
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+
+                    })
+                    .then(response => {
+                        return response.json()
+                    })
+                    .then(data => {
+                        console.log('Challenge succesfully removed:', data);
+                    })
+
+            })
+        })
+
+
+
+
     }
-    deleteBtn();
 
+    setTimeout(deleteBtn, 500)
 
 
     document.getElementById("form").addEventListener("submit", e => {
@@ -130,5 +150,6 @@ window.onload = function () {
 
         printOrder(challenge.name, challenge.points, challenge.course, challenge.session);
     })
+
 
 }
