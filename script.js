@@ -15,17 +15,17 @@ window.onload = function () {
                 return response.json()
             })
             .then(data => {
-                console.log(data)
+
 
                 for (let i = 0; i < data.length; i++) {
 
-                    console.log(data[i])
+
 
                     htmlString = `
-                    <div class="result">
+                    <div class="result" id="${data[i]._id}">
                     <div class="headerresult">
-                    <i class="material-icons">delete</i>
-                    <i class="material-icons">create</i>
+                    <i class="material-icons delete" id="${data[i]._id}">delete</i>
+                    <i class="material-icons update">create</i>
                     </div>
                     <h2> Challenge: </h2> 
                     <h3>${data[i].name}</h3>
@@ -48,8 +48,19 @@ window.onload = function () {
 
     call()
 
+    function deleteBtn() {
 
+        let btns = document.querySelectorAll(".delete");
 
+        for (let btn of btns) {
+            btn.onclick = () => {
+                console.log("caca");
+                document.getElementById(btn.id).remove();
+
+            }
+        }
+    }
+    deleteBtn();
 
 
 
@@ -81,8 +92,8 @@ window.onload = function () {
             <div class="result">
 
             <div class="headerresult">
-            <i class="material-icons">delete</i>
-            <i class="material-icons">create</i>
+            <i class="material-icons delete">delete</i>
+            <i class="material-icons create">create</i>
             </div>
             <h2> Challenge name : </h2> 
             <h3>${name}</h3>
@@ -91,12 +102,12 @@ window.onload = function () {
             <h2> Course : </h2> 
             <h3>${course}</h3>
             <h2> Session : </h2>
-            <h3>${session}}</h3> 
+            <h3>${session}</h3> 
             </div>
            `;
 
             container.insertAdjacentHTML("beforeend", htmlString);
-            console.log(name);
+
 
         }
 
@@ -114,6 +125,7 @@ window.onload = function () {
         }).then(data => {
             return data.json()
         })
+
 
 
         printOrder(challenge.name, challenge.points, challenge.course, challenge.session);

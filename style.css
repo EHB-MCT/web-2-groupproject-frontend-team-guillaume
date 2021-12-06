@@ -10,7 +10,8 @@ body {
 input[type=text],
 select,
 textarea {
-    width: 50%;
+
+    width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -19,6 +20,10 @@ textarea {
     resize: vertical;
     color: white;
     background-color: #535353;
+}
+
+h2 {
+    color: rgb(26, 26, 26);
 }
 
 #body {
@@ -39,7 +44,7 @@ label {
 }
 
 input[type=submit] {
-    width: 25%;
+    width: 100%;
     background-color: #04AA6D;
     color: white;
     padding: 12px 20px;
@@ -64,7 +69,7 @@ input[type=submit]:hover {
     margin-left: 20px;
     padding: 20px;
     border-radius: 5px;
-    background-color: #cc6262;
+    background-color: #645f5f;
     color: white;
 }
 
@@ -77,4 +82,5 @@ input[type=submit]:hover {
     display: flex;
     flex-direction: column;
     width: 50%;
+
 }
