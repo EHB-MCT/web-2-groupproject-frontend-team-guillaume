@@ -49,6 +49,10 @@ window.onload = function () {
     call()
 
 
+
+
+
+
     document.getElementById("form").addEventListener("submit", e => {
         e.preventDefault();
 
@@ -93,7 +97,23 @@ window.onload = function () {
 
             container.insertAdjacentHTML("beforeend", htmlString);
             console.log(name);
+
         }
+
+        fetch('https://challenge-app-team-guillaume.herokuapp.com/challenges', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: challengeNameValue,
+                points: pointsValue,
+                course: courseValue,
+                session: sessionValue
+            })
+        }).then(data => {
+            return data.json()
+        })
 
 
         printOrder(challenge.name, challenge.points, challenge.course, challenge.session);
