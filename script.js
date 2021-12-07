@@ -72,7 +72,7 @@ window.onload = function () {
                     .then(data => {
                         console.log('Challenge succesfully removed:', data);
                     })
-
+                window.location.reload();
             })
         })
 
