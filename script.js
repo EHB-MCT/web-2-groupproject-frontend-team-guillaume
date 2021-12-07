@@ -31,7 +31,7 @@ window.onload = function () {
                     <h2> Course : </h2> 
                     <h3>${data[i].course}</h3>
                     <h2> Session : </h2>
-                    <h3>${data[i].session}}</h3> 
+                    <h3>${data[i].session}</h3> 
                     </div>
                    `
                     container.insertAdjacentHTML("beforeend", htmlString)
