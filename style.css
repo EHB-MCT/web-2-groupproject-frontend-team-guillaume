@@ -84,3 +84,7 @@ input[type=submit]:hover {
     width: 50%;
 
 }
+
+i {
+    cursor: pointer
+}
