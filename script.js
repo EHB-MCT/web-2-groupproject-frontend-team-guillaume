@@ -45,7 +45,6 @@ window.onload = function () {
     }
     call()
 
-
     function deleteBtn() {
         console.log(document.getElementsByClassName("delete"));
 
@@ -64,7 +63,6 @@ window.onload = function () {
                         headers: {
                             'Content-Type': 'application/json',
                         },
-
                     })
                     .then(response => {
                         return response.json()
@@ -75,10 +73,6 @@ window.onload = function () {
                 window.location.reload();
             })
         })
-
-
-
-
     }
 
     setTimeout(deleteBtn, 500)
@@ -86,8 +80,6 @@ window.onload = function () {
 
     document.getElementById("form").addEventListener("submit", e => {
         e.preventDefault();
-
-
 
         const challengeNameValue = document.getElementById("challengename").value
         const pointsValue = document.getElementById("lname").value
@@ -108,7 +100,6 @@ window.onload = function () {
             let container = document.getElementById("container");
 
             let htmlString = `
-            
             <div class="result">
 
             <div class="headerresult">
